@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeeTimeManager.Data;
 
@@ -11,9 +12,11 @@ using TeeTimeManager.Data;
 namespace TeeTimeManager.Migrations
 {
     [DbContext(typeof(TeeTimeContext))]
-    partial class TeeTimeContextModelSnapshot : ModelSnapshot
+    [Migration("20250327225209_Change Teetime FK")]
+    partial class ChangeTeetimeFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,6 +44,8 @@ namespace TeeTimeManager.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TimeSlotId");
 
                     b.ToTable("TeeTimes");
                 });
@@ -70,6 +75,17 @@ namespace TeeTimeManager.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TimeSlots");
+                });
+
+            modelBuilder.Entity("TeeTimeManager.Models.Entities.TeeTime", b =>
+                {
+                    b.HasOne("TeeTimeManager.Models.Entities.TimeSlot", "Time")
+                        .WithMany()
+                        .HasForeignKey("TimeSlotId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Time");
                 });
 #pragma warning restore 612, 618
         }

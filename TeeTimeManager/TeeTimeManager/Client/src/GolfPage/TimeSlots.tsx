@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import FetchTimeSlots from "../ApiCalls/FetchTimeSlots";
-import { CardGroup } from "react-bootstrap";
+import { CardGroup, Col, Row } from "react-bootstrap";
 import TimeSlotCard from "./TimeSlotCard";
 import TimeSlotModel from "../Models/TimeSlotModel";
 
 
 function TimeSlots() {
     const [timeSlots, setTimeSlots]: any = useState<TimeSlotModel[]>([]);
-    const [error, setError]: any = useState();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -16,7 +15,6 @@ function TimeSlots() {
                 setTimeSlots(jsonTimeSlots); // Set the resolved data
             } catch (err) {
                 console.error(err);
-                setError("Failed to fetch time slots.");
             }
         };
 
@@ -30,10 +28,11 @@ function TimeSlots() {
     // }, [timeSlots]);
 
     return (
-        <div className="d-flex h-100  justify-content-start flex-column">
+        <div className="d-flex h-100 w-100 justify-content-start flex-column">
             <h1 className="color-dark align-self-center m-3">Time Slots</h1>
-            <CardGroup className="row">
+            <Row xs={2} sm={4} md={6} lg={8} className="px-4" >
                 {timeSlots.map((element: TimeSlotModel) => (
+                    <Col key={element.id}>
                     <TimeSlotCard 
                         key={element.id}
                         id={element.id} 
@@ -41,8 +40,9 @@ function TimeSlots() {
                         price={element.price} 
                         isOpen={element.isOpen}
                     />
+                    </Col>
                 ))}
-            </CardGroup>
+            </Row>
         </div>
     );
 }
