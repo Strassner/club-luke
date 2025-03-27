@@ -13,7 +13,7 @@ function TopNavbar() {
                     <Nav className="d-flex justify-content-around w-100 fs-3">
                         <Nav.Link href="/">Membership</Nav.Link>
                         <Nav.Link href="/">About The Club</Nav.Link>
-                        <Nav.Link href="/">Golf</Nav.Link>
+                        <Nav.Link href="/Golf">Golf</Nav.Link>
                         <Nav.Link href="/">Dining</Nav.Link>
                         <Nav.Link href="/">Member Login</Nav.Link>
                     </Nav>
