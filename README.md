@@ -1,0 +1,3 @@
+- To run this locally, Create a database in SQL Server and set the connection string of "DefaultConnectionString" to your database connection string.
+- CD into Client folder and npm install
+- Start both backend & frontend.
