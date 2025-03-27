@@ -3,7 +3,7 @@
 function Footer() {
 
     return (
-        <div className="bg-dark fixed-bottom" >
+        <div className="bg-dark text-center align-items-center" >
             <p className="text-light"><a href="/">Club Luke©️</a> Est. 2025</p>
             <p className="text-light">Private Golf Club sites by <a target="_blank" href="https://Github.com/Strassner">Luke Strassner</a></p>
         </div >

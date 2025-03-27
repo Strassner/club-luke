@@ -14,6 +14,17 @@ builder.Services.AddDbContext<TeeTimeContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"))
 );
 
+// Add CORS to allow the local React app at port 5173
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalReactHost", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") 
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +33,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//adding the CORS middleware
+app.UseCors("AllowLocalReactHost");
 
 app.UseHttpsRedirection();
 

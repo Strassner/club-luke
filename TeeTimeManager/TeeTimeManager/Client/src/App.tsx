@@ -5,6 +5,7 @@ import Home from './Home'
 import TopNavbar from './Components-AllPages/Navbar'
 import Footer from './Components-AllPages/Footer';
 import Golf from './GolfPage/Golf';
+import TimeSlots from './GolfPage/TimeSlots';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/">
                         <Route element={<Home />} index />
                         <Route element={<Golf />} path="/Golf" />
+                        <Route path="/Golf/TimeSlots" element={<TimeSlots />} />
                 </Route>
             </Routes>
             </BrowserRouter>

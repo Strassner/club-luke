@@ -7,7 +7,7 @@ function TopNavbar() {
     return (
         <>
 
-            <Navbar bg="dark" variant="dark" fixed="top" expand="md" id="Navbar" >
+            <Navbar bg="dark" variant="dark" expand="md" id="Navbar" >
                 <Container>
                     <Navbar.Brand href="/" className="fs-1">Club Luke ⛳</Navbar.Brand>
                     <Nav className="d-flex justify-content-around w-100 fs-3">

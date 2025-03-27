@@ -6,7 +6,7 @@ namespace TeeTimeManager.Models.Entities {
         [Key]
         public int Id { get; set; }
         //A TimeSlot might not have a TeeTime
-        public TeeTime? TimeSlotTeeTime { get; set; }
+        public int? TimeSlotTeeTimeId { get; set; }
         [Required]
         public DateTime Time { get; set; }
         //Different times could be priced differently, based on demand
