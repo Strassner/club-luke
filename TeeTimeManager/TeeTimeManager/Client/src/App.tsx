@@ -6,6 +6,7 @@ import TopNavbar from './Components-AllPages/Navbar'
 import Footer from './Components-AllPages/Footer';
 import Golf from './GolfPage/Golf';
 import TimeSlots from './GolfPage/TimeSlots';
+import TeeTimeInfo from './GolfPage/TeeTimeInfo';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                         <Route element={<Home />} index />
                         <Route element={<Golf />} path="/Golf" />
                         <Route path="/Golf/TimeSlots" element={<TimeSlots />} />
+                        <Route path="Golf/TeeTimeInfo/:id" element={<TeeTimeInfo />} />
                 </Route>
             </Routes>
             </BrowserRouter>

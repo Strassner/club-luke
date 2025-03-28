@@ -1,9 +1,8 @@
 import ITimeSlot from "../Models/TimeSlotModel";
+import { useNavigate } from "react-router-dom";
 
-const TimeSlotCard: React.FC<ITimeSlot> = ({time, price, isOpen }) => {
-    const handleClick = () => {
-        
-    };
+const TimeSlotCard: React.FC<ITimeSlot> = ({id, time, price, isOpen }) => {
+    const navigate = useNavigate();
     //formatting the time into human readable
     const timeAsDate = new Date(time);
     //getminutes returns a 0, this formats that to '00' 
@@ -19,8 +18,13 @@ const TimeSlotCard: React.FC<ITimeSlot> = ({time, price, isOpen }) => {
     const cardColor : String = (isOpen == true) ? "success" : "danger";
     //this icon helps the user determine if the time is available at a glance
     const icon : String = (isOpen == true) ? "🟢" : "🔴";
+
+    const handleClick= () => {
+        navigate(`/Golf/TeeTimeInfo/${id}`);
+    }
+
     return (
-        <div className={`card border border-${cardColor} rounded m-3`} 
+        <div className={`card border border-${cardColor} btn rounded m-3`} 
             style={{}} onClick={handleClick}>
             <div className="card-body">
                 <h5 className="card-title">{icon} {formattedTime} </h5>

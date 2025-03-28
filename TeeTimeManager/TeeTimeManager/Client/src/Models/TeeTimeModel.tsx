@@ -1,10 +1,10 @@
 
 
 interface TeeTimeModel {   
-    Id: Number;
-    NameUnder: String;
-    TimeSlotId: Number;
-    Holes: Number;
+    id: Number;
+    nameUnder: String;
+    timeSlotId: Number;
+    holes: Number;
 }
 
 export default TeeTimeModel;

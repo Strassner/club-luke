@@ -7,6 +7,15 @@ import TimeSlotModel from "../Models/TimeSlotModel";
 
 function TimeSlots() {
     const [timeSlots, setTimeSlots]: any = useState<TimeSlotModel[]>([]);
+    //displaying todays date
+    const today = new Date();
+    const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const monthsOfYear = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+    //formatting todays date - .getDay() & .getMonth() return a number to represent
+    //the value, hence using the number as an index in arrays
+    const todaysDate: String = `${daysOfWeek[today.getDay()]}, ${monthsOfYear[today.getMonth()]} ${today.getDate()}`;
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,7 +38,7 @@ function TimeSlots() {
 
     return (
         <div className="d-flex h-100 w-100 justify-content-start flex-column">
-            <h1 className="color-dark align-self-center m-3">Time Slots</h1>
+            <h1 className="color-dark align-self-center m-3">Tee Times - {todaysDate}</h1>
             <Row xs={2} sm={4} md={6} lg={8} className="px-4" >
                 {timeSlots.map((element: TimeSlotModel) => (
                     <Col key={element.id}>
