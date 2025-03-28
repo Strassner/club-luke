@@ -6,7 +6,8 @@ import TimeSlotModel from "../Models/TimeSlotModel";
 
 
 function TimeSlots() {
-    const [timeSlots, setTimeSlots]: any = useState<TimeSlotModel[]>([]);
+    const [timeSlots, setTimeSlots] = useState<TimeSlotModel[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>();
     //displaying todays date
     const today = new Date();
     const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -20,8 +21,10 @@ function TimeSlots() {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setIsLoading(true);
                 const jsonTimeSlots = await FetchTimeSlots(); // Wait for the promise to resolve
                 setTimeSlots(jsonTimeSlots); // Set the resolved data
+                setIsLoading(false);
             } catch (err) {
                 console.error(err);
             }
@@ -38,7 +41,9 @@ function TimeSlots() {
 
     return (
         <div className="d-flex h-100 w-100 justify-content-start flex-column">
-            <h1 className="color-dark align-self-center m-3">Tee Times - {todaysDate}</h1>
+             {/*Display loading if loading, and TeeTime header if not*/}
+        {(isLoading) ? <h1>Loading....</h1> : 
+            <h1 className="color-dark align-self-center m-3">Tee Times - {todaysDate}</h1>}
             <Row xs={2} sm={4} md={6} lg={8} className="px-4" >
                 {timeSlots.map((element: TimeSlotModel) => (
                     <Col key={element.id}>
