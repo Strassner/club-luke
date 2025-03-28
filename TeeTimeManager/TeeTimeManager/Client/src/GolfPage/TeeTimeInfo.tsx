@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import TimeSlotModel from "../Models/TimeSlotModel";
 import FetchTimeSlotId from "../ApiCalls/FetchTimeSlotId";
 import { useParams } from "react-router-dom";
-import { Container } from "react-bootstrap";
 import BookTeeTime from "./BookTeeTime";
 import AlreadyBookedTeeTime from "./AlreadyBookedTeeTime";
 

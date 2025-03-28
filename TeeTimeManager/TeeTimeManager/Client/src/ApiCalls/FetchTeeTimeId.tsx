@@ -1,7 +1,9 @@
 import TeeTimeModel from "../Models/TeeTimeModel";
 
 
-
+/* 
+    Fetches and returns a teetime object based off an ID.
+*/
 async function FetchTeeTimeId({id}: {id: number}):Promise<TeeTimeModel>{
     const url = `https://localhost:7036/api/TeeTimes/${id}`;
 

@@ -28,7 +28,9 @@ const TimeSlotCard: React.FC<ITimeSlot> = ({id, time, price, isOpen }) => {
             style={{}} onClick={handleClick}>
             <div className="card-body">
                 <h5 className="card-title">{icon} {formattedTime} </h5>
-                {/* <p className="card-text">Price: {price}</p> */}
+                {/* 
+                    Add this in at a later time, needs better formatting
+                <p className="card-text">Price: {price}</p> */}
                 <footer>{isOpen ? "Available" : "Booked"}</footer>
             </div>
         </div>

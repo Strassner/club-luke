@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import FetchTimeSlots from "../ApiCalls/FetchTimeSlots";
-import { CardGroup, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import TimeSlotCard from "./TimeSlotCard";
 import TimeSlotModel from "../Models/TimeSlotModel";
 
@@ -18,6 +18,7 @@ function TimeSlots() {
     const todaysDate: String = `${daysOfWeek[today.getDay()]}, ${monthsOfYear[today.getMonth()]} ${today.getDate()}`;
 
 
+    //fetches timeslot data on page refresh/load
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -33,11 +34,6 @@ function TimeSlots() {
         
         fetchData(); 
     }, []);//re-runs on page load
-
-    //debugging
-    // useEffect(() => {
-    //     console.log("Updated timeSlots:", timeSlots);
-    // }, [timeSlots]);
 
     return (
         <div className="d-flex h-100 w-100 justify-content-start flex-column">
